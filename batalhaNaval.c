@@ -13,13 +13,21 @@ int main()
     // Navios
     int navio_vertical1[3] = {3, 3, 3};
     int navio_horizontal2[3] = {3, 3, 3};
+    int navio_diagonal1[3] = {3, 3, 3};
+    int navio_diagonal2[3] = {3, 3, 3};
     // Posições Iniciais
     // Vertical
     int navio_vertical_linha_inicial = 2;
-    int navio_vertical_coluna_inicial = 0;
+    int navio_vertical_coluna_inicial = 1;
     // Horizontal
-    int navio_horizontal_coluna_inicial = 5;
+    int navio_horizontal_coluna_inicial = 2;
     int navio_horizontal_linha_inicial = 1;
+    // Diagonal1
+    int navio_diagonal1_linha_inicial = 4;
+    int navio_diagonal1_coluna_inicial = 4;
+    // Diagonal2
+    int navio_diagonal2_linha_inicial = 6;
+    int navio_diagonal2_coluna_inicial = 3;
 
     // Inicializando o tabuleiro com 0s (água)
     for (int i = 0; i < 10; i++)
@@ -29,7 +37,7 @@ int main()
             tabuleiro[i][j] = 0;
         }
     }
-
+    // Sugestão: Utilize `printf` para exibir as coordenadas de cada parte dos navios.
     // Posição Navio Vertical
     for (int i = 0; i < 3; i++)
     {
@@ -40,7 +48,28 @@ int main()
     {
         tabuleiro[navio_horizontal_linha_inicial][navio_horizontal_coluna_inicial + j] = navio_horizontal2[j];
     };
-    // Sugestão: Utilize `printf` para exibir as coordenadas de cada parte dos navios.
+    // Nível Aventureiro - Expansão do Tabuleiro e Posicionamento Diagonal
+    // Sugestão: Expanda o tabuleiro para uma matriz 10x10.
+    // Sugestão: Posicione quatro navios no tabuleiro, incluindo dois na diagonal.
+    // Sugestão: Exiba o tabuleiro completo no console, mostrando 0 para posições vazias e 3 para posições ocupadas.
+    // Posição Navio Diagonal 1
+    for (int i = 0; i < 3; i++)
+    {
+        if (navio_diagonal1_linha_inicial == navio_diagonal1_coluna_inicial)
+        {
+            tabuleiro[navio_diagonal1_linha_inicial + i][navio_diagonal1_coluna_inicial + i] = navio_diagonal1[i];
+            ;
+        }
+    }
+    // Posição Navio Diagonal 2
+    for (int i = 0; i < 3; i++)
+    {
+        if (navio_diagonal2_linha_inicial + navio_diagonal2_coluna_inicial == 9)
+        {
+            tabuleiro[navio_diagonal2_linha_inicial + i][navio_diagonal2_coluna_inicial - i] = navio_diagonal2[i];
+        }
+    }
+
     // Exibindo tabuleiro
     printf(" TABULEIRO BATALHA NAVAL \n");
     printf("  ");
@@ -52,7 +81,7 @@ int main()
     }
     printf("\n");
 
-    //Exibindo linhas e conteúdo do tabuleiro
+    // Exibindo linhas e conteúdo do tabuleiro
     for (int i = 0; i < 10; i++)
     {
         printf("%2d ", i + 1); // Imprime o número das linhas (1 a 10)
@@ -64,10 +93,6 @@ int main()
         }
         printf("\n");
     }
-    // Nível Aventureiro - Expansão do Tabuleiro e Posicionamento Diagonal
-    // Sugestão: Expanda o tabuleiro para uma matriz 10x10.
-    // Sugestão: Posicione quatro navios no tabuleiro, incluindo dois na diagonal.
-    // Sugestão: Exiba o tabuleiro completo no console, mostrando 0 para posições vazias e 3 para posições ocupadas.
 
     // Nível Mestre - Habilidades Especiais com Matrizes
     // Sugestão: Crie matrizes para representar habilidades especiais como cone, cruz, e octaedro.
