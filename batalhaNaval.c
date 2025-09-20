@@ -23,11 +23,11 @@ int main()
     int navio_horizontal_coluna_inicial = 2;
     int navio_horizontal_linha_inicial = 1;
     // Diagonal1
-    int navio_diagonal1_linha_inicial = 4;
-    int navio_diagonal1_coluna_inicial = 4;
+    int navio_diagonal1_linha_inicial = 1;
+    int navio_diagonal1_coluna_inicial = 6;
     // Diagonal2
-    int navio_diagonal2_linha_inicial = 6;
-    int navio_diagonal2_coluna_inicial = 3;
+    int navio_diagonal2_linha_inicial = 7;
+    int navio_diagonal2_coluna_inicial = 6;
 
     // Inicializando o tabuleiro com 0s (água)
     for (int i = 0; i < 10; i++)
@@ -39,33 +39,47 @@ int main()
     }
     // Sugestão: Utilize `printf` para exibir as coordenadas de cada parte dos navios.
     // Posição Navio Vertical
-    for (int i = 0; i < 3; i++)
+    // Verificando se a linha inicial mais a iteração não ultrapassa o tamanho do tabuleiro
+    if (navio_vertical_linha_inicial + 2 < 10)
     {
-        tabuleiro[navio_vertical_linha_inicial + i][navio_vertical_coluna_inicial] = navio_vertical1[i];
-    };
+        for (int i = 0; i < 3; i++)
+        {
+            tabuleiro[navio_vertical_linha_inicial + i][navio_vertical_coluna_inicial] = navio_vertical1[i];
+        }
+    }
     // Posição Navio Horizontal
-    for (int j = 0; j < 3; j++)
+    // Verificando se a coluna inicial mais a iteração não ultrapassa o tamanho do tabuleiro
+    if (navio_horizontal_coluna_inicial + 2 < 10)
     {
-        tabuleiro[navio_horizontal_linha_inicial][navio_horizontal_coluna_inicial + j] = navio_horizontal2[j];
-    };
+        for (int j = 0; j < 3; j++)
+        {
+
+            tabuleiro[navio_horizontal_linha_inicial][navio_horizontal_coluna_inicial + j] = navio_horizontal2[j];
+        }
+    }
     // Nível Aventureiro - Expansão do Tabuleiro e Posicionamento Diagonal
     // Sugestão: Expanda o tabuleiro para uma matriz 10x10.
     // Sugestão: Posicione quatro navios no tabuleiro, incluindo dois na diagonal.
     // Sugestão: Exiba o tabuleiro completo no console, mostrando 0 para posições vazias e 3 para posições ocupadas.
     // Posição Navio Diagonal 1
-    for (int i = 0; i < 3; i++)
+    // Verificando se a linha/coluna inicial mais a iteração não ultrapassa o tamanho do tabuleiro
+    if ((navio_diagonal1_linha_inicial + 2) < 10 &&
+        (navio_diagonal1_coluna_inicial + 2) < 10)
     {
-        if (navio_diagonal1_linha_inicial == navio_diagonal1_coluna_inicial)
+        for (int i = 0; i < 3; i++)
         {
+
             tabuleiro[navio_diagonal1_linha_inicial + i][navio_diagonal1_coluna_inicial + i] = navio_diagonal1[i];
-            ;
         }
     }
     // Posição Navio Diagonal 2
-    for (int i = 0; i < 3; i++)
+    // Verificando se a linha/coluna inicial mais a iteração não ultrapassa o tamanho do tabuleiro
+    if ((navio_diagonal2_linha_inicial + 2) < 10 &&
+        (navio_diagonal2_coluna_inicial - 2) >= 0)
     {
-        if (navio_diagonal2_linha_inicial + navio_diagonal2_coluna_inicial == 9)
+        for (int i = 0; i < 3; i++)
         {
+
             tabuleiro[navio_diagonal2_linha_inicial + i][navio_diagonal2_coluna_inicial - i] = navio_diagonal2[i];
         }
     }
